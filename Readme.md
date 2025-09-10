@@ -1,4 +1,4 @@
-# College Lab Programs
+# MACE MCA Lab Programs
 
 This repository contains all my lab programs for different courses.  
 Click the links to view the source code.
@@ -8,17 +8,19 @@ Click the links to view the source code.
 ## C Programming Lab
 | Sl.No | Question | Code |
 |-------|----------|------|
-| 1 | Write a program to find factorial of a number. | [program1.c](C-Programming-Lab/program1.c) |
-| 2 | Write a program to check prime number. | [program2.c](C-Programming-Lab/program2.c) |
+| 1 | Write a program to find fibonacci series. | [fibonacci.c](c/fibonacci.c) |
+| 2 | Write a program to find largest element in matrix. | [large2D.c](c/large2D.c) |
+| 2 | Write a program to find row and column sum in matrix. | [rowcolsum.c](c/rowcolsum.c) |
+| 2 | Write a program to search an element from a matrix. | [search.c](c/search.c) |
+| 2 | Write a program to implement spiral traversal in a matrix. | [spiraltraversal.c](c/spiraltraversal.c) |
 
 ---
 
 ## Data Structures Lab
 | Sl.No | Question | Code |
 |-------|----------|------|
-| 1 | Implement a singly linked list with insertion and deletion. | [linkedlist.c](Data-Structures-Lab/linkedlist.c) |
-| 2 | Implement stack using arrays. | [stack.c](Data-Structures-Lab/stack.c) |
-| 3 | Implement queue using arrays. | [queue.c](Data-Structures-Lab/queue.c) |
+| 1 | Implement a singly linked list with insertion and deletion. | [linkedlist.c](DS/linkedlist.c) |
+| 2 | Implement stack using linkedlist. | [linkedstack.c](DS/linkedstack.c) |
 
 ---
 

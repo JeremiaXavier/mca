@@ -12,7 +12,7 @@ for(i=0;i<n;i++)
 printf("Enter the item to be checked");
 scanf("%s",search);
 for(i=0;i<n;i++){
-  if(!(strcmpi(str[i],search)){
+  if(!(strcmpi(str[i],search))){
     printf("Item found");
     break;}
 }
