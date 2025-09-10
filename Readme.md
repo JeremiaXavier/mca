@@ -10,9 +10,9 @@ Click the links to view the source code.
 |-------|----------|------|
 | 1 | Write a program to find fibonacci series. | [fibonacci.c](c/fibonacci.c) |
 | 2 | Write a program to find largest element in matrix. | [large2D.c](c/large2D.c) |
-| 2 | Write a program to find row and column sum in matrix. | [rowcolsum.c](c/rowcolsum.c) |
-| 2 | Write a program to search an element from a matrix. | [search.c](c/search.c) |
-| 2 | Write a program to implement spiral traversal in a matrix. | [spiraltraversal.c](c/spiraltraversal.c) |
+| 3 | Write a program to find row and column sum in matrix. | [rowcolsum.c](c/rowcolsum.c) |
+| 4 | Write a program to search an element from a matrix. | [search.c](c/search.c) |
+| 5 | Write a program to implement spiral traversal in a matrix. | [spiraltraversal.c](c/spiraltraversal.c) |
 
 ---
 
