@@ -1,0 +1,269 @@
+<!-- Registration form -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+    <style>
+        table tr td {
+            padding: 2px;
+        }
+
+        body {
+            background: rgb(247, 245, 245);
+            color: rgb(15, 13, 13);
+            font-weight: 200;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            /* Adjust size as needed */
+            height: 300px;
+            background: url('https://media.licdn.com/dms/image/v2/C560BAQGPH_rhIaWQTQ/company-logo_200_200/company-logo_200_200/0/1631364783567?e=2147483647&v=beta&t=dCwGMDwDljnkA107aRdxWHX_KZqaqM4C5X5Bhods3-o') no-repeat center center;
+            background-size: contain;
+            opacity: 0.2;
+            /* low opacity for watermark effect */
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            /* so it doesn't block clicks */
+            z-index: 0;
+        }
+        table{
+            padding: 5px;
+            border: 1px solid black;
+        }
+        table tr{
+            border-bottom: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+            <img src="https://mace.ac.in/wp-content/uploads/2025/01/logo-2.svg" alt="">
+
+        </header>
+    <center>
+        <h1>Admission Form</h1>
+        <h4>personal information</h4>
+        <table>
+
+            <tr>
+                <td>Name: </td>
+                <td><input type="text" name="username" id=""></td>
+                <td>Gender</td>
+                <td><input type="radio" name="" id="male"><label for="male">Male </label></td>
+                <td><input type="radio" name="" id="female"><label for="female">Female</label></td>
+
+            </tr>
+            <tr>
+                <td>Phone Number</td>
+                <td><input type="text" name="phone" id=""></td>
+                <td>Religion</td>
+                <td colspan="2"><input type="text" name="" id=""></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" name="" id=""></td>
+                <td>Blood Group</td>
+                <td colspan="2"><input type="text" name="" id=""></td>
+            </tr>
+            <tr>
+                <td>Date of Birth</td>
+                <td><input type="text" name="" id=""></td>
+                <td>Blood Group</td>
+                <td colspan="2"><input type="text" name="" id=""></td>
+            </tr>
+            <tr>
+                <td>Category</td>
+                <td><select name="Category" id="">
+                        <option value="">Choose</option>
+                        <option value="general">General</option>
+                        <option value="obc">OBC</option>
+                        <option value="sc">SC</option>
+                        <option value="st">ST</option>
+                    </select></td>
+            </tr>
+
+        </table>
+        <table border="0">
+            <h4>Contact Information</h4>
+            <tr>
+                <td>Mobile Number</td>
+                <td><input type="text" name="" id=""></td>
+                <td>Alternate Phone</td>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td colspan="3"><input type="text" name="" id=""></td>
+            </tr>
+            <tr>
+                <td>Permanent Address</td>
+                <td><textarea name="" id=""></textarea></td>
+                <td>Current Address</td>
+                <td><textarea name="" id=""></textarea></td>
+            </tr>
+        </table>
+        <table border="0">
+            <h4>Parent/Guardian Details</h4>
+            <tr>
+                <td>Father's Name</td>
+                <td><input type="text" name="" id=""></td>
+                <td>Mother's Name</td>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+            <tr>
+                <td>Guardian's Name <br>(if applicable)</td>
+                <td><input type="text" name="" id=""></td>
+                <td>Occupation of <br> Parent/Guardian</td>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+            <tr>
+                <td>Email ID (optional)</td>
+                <td colspan="3"><input style="width: 100%;" type="text" name="" id=""></td>
+            </tr>
+            <tr>
+                <td>Annual Family Income</td>
+                <td colspan="3"><input style="width: 100%;" type="text" name="" id=""></td>
+            </tr>
+        </table>
+        <table>
+            <h4><u>Academic Details</u></h4>
+            <h5>High School / 10th Grade:</h5>
+            <tr>
+                <td>School Name</td>
+                <td><input type="text" name="" id=""></td>
+                <td>Board</td>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+
+            <tr>
+                <td>Year of Passing</td>
+                <td><input type="date" name="" id=""></td>
+                <td>Marks obtained</td>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+        </table>
+        <table>
+
+            <h5>Higher Secondary / 12th Grade:</h5>
+            <tr>
+                <td>School Name</td>
+                <td><input type="text" name="" id=""></td>
+                <td>Board</td>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+            <tr>
+                <td>Stream</td>
+                <td colspan="3">
+                    <input style="width: 100%;" type="text" name="" id="">
+                </td>
+            </tr>
+            <tr>
+                <td>Year of Passing</td>
+                <td><input type="date" name="" id=""></td>
+                <td>Marks obtained</td>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+        </table>
+
+
+        <table>
+            <h4>Course or Program details</h4>
+            <tr>
+                <td>Course Applied</td>
+                <td><input type="text" name="" id=""></td>
+                <td>Specialization</td>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+            <tr>
+                <td>Mode of study</td>
+                <td><select name="" id="">
+                        <option value="">Choose</option>
+                        <option value="">Online</option>
+                        <option value="">Offline</option>
+                    </select></td>
+                <td>Preferred Language</td>
+                <td>
+                    <input type="text" name="" id="">
+                </td>
+            </tr>
+
+        </table>
+        <table>
+            <h4>Documents Upload Section</h4>
+            <tr>
+                <td>
+                    Passport Size Photograph
+                </td>
+                <td><input type="file" name="" id=""></td>
+                <td>
+                    Signature
+                </td>
+                <td><input type="file" name="" id=""></td>
+            </tr>
+            <tr>
+                <td>
+                    SSLC Certificate
+                </td>
+                <td><input type="file" name="" id=""></td>
+                <td>
+                    Plus Two
+                </td>
+                <td><input type="file" name="" id=""></td>
+            </tr>
+            <tr>
+                <td>
+                    Entrance Exam ScoreCard
+                </td>
+                <td><input type="file" name="" id=""></td>
+                <td>
+                    Transfer Certificate
+                </td>
+                <td><input type="file" name="" id=""></td>
+            </tr>
+            <tr>
+                <td>
+                    Category Certificate (if applicable)
+                </td>
+                <td><input type="file" name="" id=""></td>
+                <td>
+                    Domicile Certificate (if applicable)
+                </td>
+                <td><input type="file" name="" id=""></td>
+            </tr>
+            <tr>
+                <td>
+                    Income Certificate (if scholarship/fee concession applied) </td>
+                <td><input type="file" name="" id=""></td>
+            </tr>
+
+        </table><br>
+        <button>Submit</button>
+        <table border="1">
+            <h2>Office Use only</h2>
+            <tr>
+                <td>Admission Number</td>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+            <tr>
+                <td>Rollnumber</td>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+        </table>
+    </center>
+
+</body>
+
+</html>
