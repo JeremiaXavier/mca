@@ -21,6 +21,7 @@ Click the links to view the source code.
 |-------|----------|------|
 | 1 | Implement a singly linked list with insertion and deletion. | [linkedlist.c](DS/linkedlist.c) |
 | 2 | Implement stack using linkedlist. | [linkedstack.c](DS/linkedstack.c) |
+| 2 | Implement doubly linkedlist and it operations. | [doubly_linkedlist.c](DS/doubly_linkedlist.c) |
 
 ---
 
