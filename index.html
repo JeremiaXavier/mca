@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MACE MCA Lab Programs - Online Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <!-- Prism.js for syntax highlighting -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-tomorrow-night.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f4f6f9;
+      color: #333;
+    }
+    h1, p {
+      text-align: center;
+    }
+    details {
+      margin: 15px auto;
+      max-width: 800px;
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    summary {
+      font-weight: bold;
+      font-size: 1.2em;
+      cursor: pointer;
+      color: #0077cc;
+    }
+    summary:hover {
+      color: #005599;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      padding: 8px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background: #f0f0f0;
+    }
+    td a {
+      text-decoration: none;
+      color: #0077cc;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    td a:hover {
+      color: #005599;
+    }
+
+    /* Code viewer */
+    #viewer-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      display: none;
+    }
+    #viewer-header {
+      background: #1e1e1e;
+      color: #eee;
+      padding: 10px 15px;
+      font-family: monospace;
+      font-size: 0.95em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    #viewer-header span {
+      font-weight: bold;
+      word-break: break-all;
+    }
+    #viewer-header button {
+      background: #0077cc;
+      border: none;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.85em;
+    }
+    #viewer-header button:hover {
+      background: #005599;
+    }
+    pre {
+      margin: 0;
+      font-family: "Fira Code", monospace;
+      font-size: 0.9em;
+      line-height: 1.4;
+      overflow-x: auto;
+    }
+
+    footer {
+      text-align: center;
+      margin: 30px 0;
+      font-size: 0.85em;
+      color: #555;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body { margin: 10px; }
+      details { max-width: 100%; padding: 12px; }
+      th, td { font-size: 0.9em; }
+      pre { font-size: 0.8em; }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 1.4em; }
+      table, th, td { font-size: 0.85em; }
+      #viewer-header { font-size: 0.8em; flex-direction: column; align-items: flex-start; }
+      #viewer-header button { align-self: flex-end; }
+      pre { font-size: 0.75em; }
+    }
+  </style>
+</head>
+<body>
+  <h1>MACE MCA Lab Programs</h1>
+  <p>Browse  programs and view the code directly here</p>
+
+  <!-- C Programming Lab -->
+  <details>
+    <summary>C Programming Lab</summary>
+    <table>
+      <tr><th>Sl.No</th><th>Question</th><th>Code</th></tr>
+      <tr><td>1</td><td>Write a program to find fibonacci series.</td><td><a onclick="loadCode('c/fibonacci.c','c')">View</a></td></tr>
+      <tr><td>2</td><td>Write a program to find largest element in matrix.</td><td><a onclick="loadCode('c/large2D.c','c')">View</a></td></tr>
+      <tr><td>3</td><td>Write a program to find row and column sum in matrix.</td><td><a onclick="loadCode('c/rowcolsum.c','c')">View</a></td></tr>
+      <tr><td>4</td><td>Write a program to search an element from a matrix.</td><td><a onclick="loadCode('c/search.c','c')">View</a></td></tr>
+      <tr><td>5</td><td>Write a program to implement spiral traversal in a matrix.</td><td><a onclick="loadCode('c/spiraltraversal.c','c')">View</a></td></tr>
+    </table>
+  </details>
+
+  <!-- Data Structures Lab -->
+  <details>
+    <summary>Data Structures Lab</summary>
+    <table>
+      <tr><th>Sl.No</th><th>Question</th><th>Code</th></tr>
+      <tr><td>1</td><td>Implement a singly linked list with insertion and deletion.</td><td><a onclick="loadCode('DS/linkedlist.c','c')">View</a></td></tr>
+      <tr><td>2</td><td>Implement stack using linkedlist.</td><td><a onclick="loadCode('DS/linkedstack.c','c')">View</a></td></tr>
+      <tr><td>3</td><td>Implement doubly linkedlist and its operations.</td><td><a onclick="loadCode('DS/doubly_linkedlist.c','c')">View</a></td></tr>
+    </table>
+  </details>
+
+  <!-- Web Development Lab -->
+  <details>
+    <summary>Web Development Lab</summary>
+    <table>
+      <tr><th>Sl.No</th><th>Question</th><th>Code</th></tr>
+      <tr><td>1</td><td>Prepare a Registration form for admission.</td><td><a onclick="loadCode('web_development/prgm1.html','markup')">View</a></td></tr>
+    </table>
+  </details>
+
+  <!-- Code Viewer -->
+  <div id="viewer-container">
+    <div id="viewer-header">
+      <span id="file-name">File Viewer</span>
+      <button onclick="copyCode()">Copy</button>
+    </div>
+    <pre class="line-numbers"><code id="code-box" class="language-c"></code></pre>
+  </div>
+
+<footer style="margin-top: 40px; padding: 20px; background: #f6f6f6; color: #000 ; text-align: center; border-radius: 8px;">
+  <img src="https://jeremiaxavier.github.io/jstatic/jeremia-xavier-high-resolution-logo-transparent.png" alt="Logo" style=" height: 20px; vertical-align: middle; margin-right: 10px;">
+  © 2025 Jeremia Xavier Projects
+</footer>
+
+
+  <script>
+    async function loadCode(path, lang) {
+      const url = `https://raw.githubusercontent.com/JeremiaXavier/mca/refs/heads/main/${path}`;
+      const res = await fetch(url);
+      const text = await res.text();
+
+      const codeBox = document.getElementById("code-box");
+      const viewer = document.getElementById("viewer-container");
+      const fileName = document.getElementById("file-name");
+
+      codeBox.className = "language-" + lang;
+      codeBox.textContent = text;
+      fileName.textContent = path;
+
+      viewer.style.display = "block";
+
+      Prism.highlightAll(); 
+      viewer.scrollIntoView({behavior: "smooth"});
+    }
+
+    function copyCode() {
+      const codeText = document.getElementById("code-box").textContent;
+      navigator.clipboard.writeText(codeText);
+      alert("Code copied to clipboard!");
+    }
+  </script>
+</body>
+</html>
