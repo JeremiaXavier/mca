@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>MACE MCA Lab Programs - Online Viewer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Prism.js for syntax highlighting -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-tomorrow-night.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-tomorrow-night.min.css"
+    rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css"
+    rel="stylesheet" />
 
   <style>
     body {
@@ -21,45 +25,56 @@
       background: #f4f6f9;
       color: #333;
     }
-    h1, p {
+
+    h1,
+    p {
       text-align: center;
     }
+
     details {
       margin: 15px auto;
       max-width: 800px;
       background: #fff;
       padding: 15px;
       border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
+
     summary {
       font-weight: bold;
       font-size: 1.2em;
       cursor: pointer;
       color: #0077cc;
     }
+
     summary:hover {
       color: #005599;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 10px;
     }
-    th, td {
+
+    th,
+    td {
       padding: 8px;
       border: 1px solid #ddd;
       text-align: left;
     }
+
     th {
       background: #f0f0f0;
     }
+
     td a {
       text-decoration: none;
       color: #0077cc;
       font-weight: bold;
       cursor: pointer;
     }
+
     td a:hover {
       color: #005599;
     }
@@ -70,9 +85,10 @@
       margin: 40px auto;
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       display: none;
     }
+
     #viewer-header {
       background: #1e1e1e;
       color: #eee;
@@ -85,10 +101,12 @@
       flex-wrap: wrap;
       gap: 10px;
     }
+
     #viewer-header span {
       font-weight: bold;
       word-break: break-all;
     }
+
     #viewer-header button {
       background: #0077cc;
       border: none;
@@ -98,9 +116,11 @@
       cursor: pointer;
       font-size: 0.85em;
     }
+
     #viewer-header button:hover {
       background: #005599;
     }
+
     pre {
       margin: 0;
       font-family: "Fira Code", monospace;
@@ -118,34 +138,91 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      body { margin: 10px; }
-      details { max-width: 100%; padding: 12px; }
-      th, td { font-size: 0.9em; }
-      pre { font-size: 0.8em; }
+      body {
+        margin: 10px;
+      }
+
+      details {
+        max-width: 100%;
+        padding: 12px;
+      }
+
+      th,
+      td {
+        font-size: 0.9em;
+      }
+
+      pre {
+        font-size: 0.8em;
+      }
     }
+
     @media (max-width: 480px) {
-      h1 { font-size: 1.4em; }
-      table, th, td { font-size: 0.85em; }
-      #viewer-header { font-size: 0.8em; flex-direction: column; align-items: flex-start; }
-      #viewer-header button { align-self: flex-end; }
-      pre { font-size: 0.75em; }
+      h1 {
+        font-size: 1.4em;
+      }
+
+      table,
+      th,
+      td {
+        font-size: 0.85em;
+      }
+
+      #viewer-header {
+        font-size: 0.8em;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      #viewer-header button {
+        align-self: flex-end;
+      }
+
+      pre {
+        font-size: 0.75em;
+      }
     }
   </style>
 </head>
+
 <body>
   <h1>MACE MCA Lab Programs</h1>
-  <p>Browse  programs and view the code directly here</p>
+  <p>Browse programs and view the code directly here</p>
 
   <!-- C Programming Lab -->
   <details>
     <summary>C Programming Lab</summary>
     <table>
-      <tr><th>Sl.No</th><th>Question</th><th>Code</th></tr>
-      <tr><td>1</td><td>Write a program to find fibonacci series.</td><td><a onclick="loadCode('c/fibonacci.c','c')">View</a></td></tr>
-      <tr><td>2</td><td>Write a program to find largest element in matrix.</td><td><a onclick="loadCode('c/large2D.c','c')">View</a></td></tr>
-      <tr><td>3</td><td>Write a program to find row and column sum in matrix.</td><td><a onclick="loadCode('c/rowcolsum.c','c')">View</a></td></tr>
-      <tr><td>4</td><td>Write a program to search an element from a matrix.</td><td><a onclick="loadCode('c/search.c','c')">View</a></td></tr>
-      <tr><td>5</td><td>Write a program to implement spiral traversal in a matrix.</td><td><a onclick="loadCode('c/spiraltraversal.c','c')">View</a></td></tr>
+      <tr>
+        <th>Sl.No</th>
+        <th>Question</th>
+        <th>Code</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Write a program to find fibonacci series.</td>
+        <td><a onclick="loadCode('c/fibonacci.c','c')">View</a></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Write a program to find largest element in matrix.</td>
+        <td><a onclick="loadCode('c/large2D.c','c')">View</a></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Write a program to find row and column sum in matrix.</td>
+        <td><a onclick="loadCode('c/rowcolsum.c','c')">View</a></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Write a program to search an element from a matrix.</td>
+        <td><a onclick="loadCode('c/search.c','c')">View</a></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Write a program to implement spiral traversal in a matrix.</td>
+        <td><a onclick="loadCode('c/spiraltraversal.c','c')">View</a></td>
+      </tr>
     </table>
   </details>
 
@@ -153,12 +230,41 @@
   <details>
     <summary>Data Structures Lab</summary>
     <table>
-      <tr><th>Sl.No</th><th>Question</th><th>Code</th></tr>
-      <tr><td>1</td><td>Implement a singly linked list with insertion and deletion.</td><td><a onclick="loadCode('DS/linkedlist.c','c')">View</a></td></tr>
-      <tr><td>2</td><td>Implement stack using linkedlist.</td><td><a onclick="loadCode('DS/linkedstack.c','c')">View</a></td></tr>
-      <tr><td>3</td><td>Implement doubly linkedlist and its operations.</td><td><a onclick="loadCode('DS/doubly_linkedlist.c','c')">View</a></td></tr>
-      <tr><td>3</td><td>Implement circular queue and its operations.</td><td><a onclick="loadCode('DS/circularqueue.c','c')">View</a></td></tr>
-      <tr><td>3</td><td>Implement Binary tree and its operations.</td><td><a onclick="loadCode('DS/Binarytree.c','c')">View</a></td></tr>
+      <tr>
+        <th>Sl.No</th>
+        <th>Question</th>
+        <th>Code</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Implement a singly linked list with insertion and deletion.</td>
+        <td><a onclick="loadCode('DS/linkedlist.c','c')">View</a></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Implement stack using linkedlist.</td>
+        <td><a onclick="loadCode('DS/linkedstack.c','c')">View</a></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Implement doubly linkedlist and its operations.</td>
+        <td><a onclick="loadCode('DS/doubly_linkedlist.c','c')">View</a></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Implement circular queue and its operations.</td>
+        <td><a onclick="loadCode('DS/circularqueue.c','c')">View</a></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Implement Binary tree and its operations.</td>
+        <td><a onclick="loadCode('DS/Binarytree.c','c')">View</a></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Implement Binary tree and its operations.</td>
+        <td><a onclick="loadCode('DS/binarysearchtree.c','c')">View</a></td>
+      </tr>
     </table>
   </details>
 
@@ -166,8 +272,16 @@
   <details>
     <summary>Web Development Lab</summary>
     <table>
-      <tr><th>Sl.No</th><th>Question</th><th>Code</th></tr>
-      <tr><td>1</td><td>Prepare a Registration form for admission.</td><td><a onclick="loadCode('web_development/prgm1.html','markup')">View</a></td></tr>
+      <tr>
+        <th>Sl.No</th>
+        <th>Question</th>
+        <th>Code</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Prepare a Registration form for admission.</td>
+        <td><a onclick="loadCode('web_development/prgm1.html','markup')">View</a></td>
+      </tr>
     </table>
   </details>
 
@@ -180,10 +294,12 @@
     <pre class="line-numbers"><code id="code-box" class="language-c"></code></pre>
   </div>
 
-<footer style="margin-top: 40px; padding: 20px; background: #f6f6f6; color: #000 ; text-align: center; border-radius: 8px;">
-  <img src="https://jeremiaxavier.github.io/jstatic/jeremia-xavier-high-resolution-logo-transparent.png" alt="Logo" style=" height: 20px; vertical-align: middle; margin-right: 10px;">
-  © 2025 Jeremia Xavier Projects
-</footer>
+  <footer
+    style="margin-top: 40px; padding: 20px; background: #f6f6f6; color: #000 ; text-align: center; border-radius: 8px;">
+    <img src="https://jeremiaxavier.github.io/jstatic/jeremia-xavier-high-resolution-logo-transparent.png" alt="Logo"
+      style=" height: 20px; vertical-align: middle; margin-right: 10px;">
+    © 2025 Jeremia Xavier Projects
+  </footer>
 
 
   <script>
@@ -202,8 +318,8 @@
 
       viewer.style.display = "block";
 
-      Prism.highlightAll(); 
-      viewer.scrollIntoView({behavior: "smooth"});
+      Prism.highlightAll();
+      viewer.scrollIntoView({ behavior: "smooth" });
     }
 
     function copyCode() {
@@ -213,4 +329,5 @@
     }
   </script>
 </body>
+
 </html>
