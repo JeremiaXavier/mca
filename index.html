@@ -3,340 +3,393 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>MACE MCA Lab Programs - Online Viewer</title>
+  <title>MACE MCA Lab Programs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Prism.js for syntax highlighting -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-tomorrow-night.min.css"
-    rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css"
-    rel="stylesheet" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-atom-dark.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
   <style>
+    :root {
+      --bg-color: #1a1a2e;
+      --card-bg: #2d2d44;
+      --text-color: #e0e0e0;
+      --highlight-color: #ff6a6a;
+      --primary-color: #4CAF50;
+      --secondary-color: #7289da;
+      --border-radius: 12px;
+      --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.2);
+      --shadow-dark: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background: #f4f6f9;
-      color: #333;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
-    h1,
-    p {
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
+      flex-grow: 1;
+    }
+
+    h1, h2, p {
       text-align: center;
+      margin-bottom: 20px;
     }
 
-    details {
-      margin: 15px auto;
-      max-width: 800px;
-      background: #fff;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    h1 {
+      font-weight: 600;
+      font-size: 2.5em;
+      color: var(--highlight-color);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+      font-size: 1.8em;
+      color: var(--secondary-color);
+      margin-top: 40px;
+    }
+
+    .program-section {
+      background-color: var(--card-bg);
+      padding: 25px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      margin-bottom: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .program-section:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-dark);
+    }
+
+    .program-section details {
+      border: none;
+      margin: 0;
     }
 
     summary {
-      font-weight: bold;
-      font-size: 1.2em;
+      font-weight: 600;
+      font-size: 1.3em;
+      color: var(--primary-color);
       cursor: pointer;
-      color: #0077cc;
+      padding: 10px 0;
+      transition: color 0.3s ease;
+      list-style: none;
+      position: relative;
+    }
+
+    summary::before {
+      content: '+';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.5em;
+      transition: transform 0.3s ease;
+    }
+
+    details[open] summary::before {
+      content: '-';
+      transform: translateY(-50%) rotate(45deg);
     }
 
     summary:hover {
-      color: #005599;
+      color: var(--highlight-color);
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
+      margin-top: 15px;
+      font-size: 0.95em;
     }
 
-    th,
-    td {
-      padding: 8px;
-      border: 1px solid #ddd;
+    th, td {
+      padding: 12px;
       text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     th {
-      background: #f0f0f0;
+      background-color: #3f3f5a;
+      font-weight: 500;
+      color: #b0b0d0;
     }
 
     td a {
       text-decoration: none;
-      color: #0077cc;
-      font-weight: bold;
-      cursor: pointer;
+      color: var(--secondary-color);
+      font-weight: 600;
+      transition: color 0.3s ease;
     }
 
     td a:hover {
-      color: #005599;
+      color: var(--primary-color);
     }
 
-    /* Code viewer */
     #viewer-container {
       max-width: 1000px;
       margin: 40px auto;
-      border-radius: 8px;
+      border-radius: var(--border-radius);
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      box-shadow: var(--shadow-dark);
       display: none;
+      animation: fadeInScale 0.5s ease-out;
+    }
+
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     #viewer-header {
       background: #1e1e1e;
       color: #eee;
-      padding: 10px 15px;
-      font-family: monospace;
-      font-size: 0.95em;
+      padding: 12px 20px;
+      font-family: 'Roboto Mono', monospace;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
+      border-bottom: 1px solid #333;
     }
 
     #viewer-header span {
-      font-weight: bold;
-      word-break: break-all;
+      font-weight: 500;
+      color: var(--primary-color);
     }
 
     #viewer-header button {
-      background: #0077cc;
+      background: var(--secondary-color);
       border: none;
       color: white;
-      padding: 6px 12px;
-      border-radius: 4px;
+      padding: 8px 16px;
+      border-radius: 6px;
       cursor: pointer;
-      font-size: 0.85em;
+      font-size: 0.9em;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
     }
 
     #viewer-header button:hover {
-      background: #005599;
+      background: var(--primary-color);
     }
 
     pre {
       margin: 0;
-      font-family: "Fira Code", monospace;
+      font-family: 'Roboto Mono', monospace;
       font-size: 0.9em;
-      line-height: 1.4;
+      line-height: 1.5;
       overflow-x: auto;
+      background-color: #1e1e1e !important;
+      padding: 20px;
     }
 
     footer {
       text-align: center;
-      margin: 30px 0;
+      margin-top: 40px;
+      padding: 20px;
+      border-top: 1px solid #333;
+      color: #888;
       font-size: 0.85em;
-      color: #555;
     }
 
-    /* Responsive */
+    .footer-logo {
+      height: 25px;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
     @media (max-width: 768px) {
-      body {
-        margin: 10px;
+      .container {
+        margin: 20px auto;
       }
 
-      details {
-        max-width: 100%;
-        padding: 12px;
-      }
-
-      th,
-      td {
-        font-size: 0.9em;
-      }
-
-      pre {
-        font-size: 0.8em;
-      }
-    }
-
-    @media (max-width: 480px) {
       h1 {
-        font-size: 1.4em;
+        font-size: 2em;
       }
 
-      table,
-      th,
-      td {
-        font-size: 0.85em;
-      }
-
-      #viewer-header {
-        font-size: 0.8em;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      #viewer-header button {
-        align-self: flex-end;
-      }
-
-      pre {
-        font-size: 0.75em;
+      .program-section {
+        padding: 20px;
       }
     }
   </style>
 </head>
 
 <body>
-  <h1>MACE MCA Lab Programs</h1>
-  <p>Browse programs and view the code directly here</p>
+  <div class="container">
+    <h1>MACE MCA Lab Programs</h1>
+    <p>Explore and view code for various lab exercises.</p>
 
-  <!-- C Programming Lab -->
-  <details>
-    <summary>C Programming Lab</summary>
-    <table>
-      <tr>
-        <th>Sl.No</th>
-        <th>Question</th>
-        <th>Code</th>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>Write a program to find fibonacci series.</td>
-        <td><a onclick="loadCode('c/fibonacci.c','c')">View</a></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Write a program to find largest element in matrix.</td>
-        <td><a onclick="loadCode('c/large2D.c','c')">View</a></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Write a program to find row and column sum in matrix.</td>
-        <td><a onclick="loadCode('c/rowcolsum.c','c')">View</a></td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>Write a program to search an element from a matrix.</td>
-        <td><a onclick="loadCode('c/search.c','c')">View</a></td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>Write a program to implement spiral traversal in a matrix.</td>
-        <td><a onclick="loadCode('c/spiraltraversal.c','c')">View</a></td>
-      </tr>
-    </table>
-  </details>
-
-  <!-- Data Structures Lab -->
-  <details>
-    <summary>Data Structures Lab</summary>
-    <table>
-      <tr>
-        <th>Sl.No</th>
-        <th>Question</th>
-        <th>Code</th>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>Implement a singly linked list with insertion and deletion.</td>
-        <td><a onclick="loadCode('DS/linkedlist.c','c')">View</a></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Implement stack using linkedlist.</td>
-        <td><a onclick="loadCode('DS/linkedstack.c','c')">View</a></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Implement doubly linkedlist and its operations.</td>
-        <td><a onclick="loadCode('DS/doubly_linkedlist.c','c')">View</a></td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>Implement circular queue and its operations.</td>
-        <td><a onclick="loadCode('DS/circularqueue.c','c')">View</a></td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>Implement Binary tree and its operations.</td>
-        <td><a onclick="loadCode('DS/Binarytree.c','c')">View</a></td>
-      </tr>
-
-      <tr>
-        <td>6</td>
-        <td>Set operations (Union,Intersection etc).</td>
-        <td><a onclick="loadCode('DS/Setoperations.c','c')">View</a></td>
-      </tr>
-      <!-- <tr>
-        <td>6</td>
-        <td>Implement Binary Search tree and its operations.</td>
-        <td><a onclick="loadCode('DS/binarysearchtree.c','c')">View</a></td>
-      </tr> -->
-    </table> 
-  </details>
-
-  <!-- Web Development Lab -->
-  <details>
-    <summary>Web Development Lab</summary>
-    <table>
-      <tr>
-        <th>Sl.No</th>
-        <th>Question</th>
-        <th>Code</th>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>Prepare a Registration form for admission.</td>
-        <td><a onclick="loadCode('web_development/prgm1.html','markup')">View</a></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Create an HTML page to demonstrate the use of inline, internal, and external CSS.</td>
-        <td><a onclick="loadCode('web_development/prgm2.html','markup')">View</a></td>
-      </tr>
-    </table>
-  </details>
-
-  <!-- Code Viewer -->
-  <div id="viewer-container">
-    <div id="viewer-header">
-      <span id="file-name">File Viewer</span>
-      <button onclick="copyCode()">Copy</button>
+    <div class="program-section">
+      <details>
+        <summary>C Programming Lab</summary>
+        <table>
+          <tr>
+            <th>Sl.No</th>
+            <th>Question</th>
+            <th>Code</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Write a program to find fibonacci series.</td>
+            <td><a onclick="loadCode('c/fibonacci.c','c')">View</a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Write a program to find largest element in matrix.</td>
+            <td><a onclick="loadCode('c/large2D.c','c')">View</a></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Write a program to find row and column sum in matrix.</td>
+            <td><a onclick="loadCode('c/rowcolsum.c','c')">View</a></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Write a program to search an element from a matrix.</td>
+            <td><a onclick="loadCode('c/search.c','c')">View</a></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Write a program to implement spiral traversal in a matrix.</td>
+            <td><a onclick="loadCode('c/spiraltraversal.c','c')">View</a></td>
+          </tr>
+        </table>
+      </details>
     </div>
-    <pre class="line-numbers"><code id="code-box" class="language-c"></code></pre>
+
+    <div class="program-section">
+      <details>
+        <summary>Data Structures Lab</summary>
+        <table>
+          <tr>
+            <th>Sl.No</th>
+            <th>Question</th>
+            <th>Code</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Implement a singly linked list with insertion and deletion.</td>
+            <td><a onclick="loadCode('DS/linkedlist.c','c')">View</a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Implement stack using linkedlist.</td>
+            <td><a onclick="loadCode('DS/linkedstack.c','c')">View</a></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Implement doubly linkedlist and its operations.</td>
+            <td><a onclick="loadCode('DS/doubly_linkedlist.c','c')">View</a></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Implement circular queue and its operations.</td>
+            <td><a onclick="loadCode('DS/circularqueue.c','c')">View</a></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Implement Binary tree and its operations.</td>
+            <td><a onclick="loadCode('DS/Binarytree.c','c')">View</a></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Set operations (Union,Intersection etc).</td>
+            <td><a onclick="loadCode('DS/Setoperations.c','c')">View</a></td>
+          </tr>
+        </table>
+      </details>
+    </div>
+
+    <div class="program-section">
+      <details>
+        <summary>Web Development Lab</summary>
+        <table>
+          <tr>
+            <th>Sl.No</th>
+            <th>Question</th>
+            <th>Code</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Prepare a Registration form for admission.</td>
+            <td><a onclick="loadCode('web_development/prgm1.html','markup')">View</a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Create an HTML page to demonstrate the use of inline, internal, and external CSS.</td>
+            <td><a onclick="loadCode('web_development/prgm2.html','markup')">View</a></td>
+          </tr>
+        </table>
+      </details>
+    </div>
+
+    <div id="viewer-container">
+      <div id="viewer-header">
+        <span id="file-name">File Viewer</span>
+        <button onclick="copyCode()">Copy Code</button>
+      </div>
+      <pre class="line-numbers"><code id="code-box"></code></pre>
+    </div>
   </div>
 
-  <footer
-    style="margin-top: 40px; padding: 20px; background: #f6f6f6; color: #000 ; text-align: center; border-radius: 8px;">
-    <img src="https://jeremiaxavier.github.io/jstatic/jeremia-xavier-high-resolution-logo-transparent.png" alt="Logo"
-      style=" height: 20px; vertical-align: middle; margin-right: 10px;">
+  <footer>
+    <img src="https://jeremiaxavier.github.io/jstatic/logowhite.png" alt="Logo" class="footer-logo">
     © 2025 Jeremia Xavier Projects
   </footer>
 
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
   <script>
     async function loadCode(path, lang) {
-      const url = `https://raw.githubusercontent.com/JeremiaXavier/mca/refs/heads/main/${path}`;
-      const res = await fetch(url);
-      const text = await res.text();
+      const url = `https://raw.githubusercontent.com/JeremiaXavier/mca/main/${path}`;
+      try {
+        const res = await fetch(url);
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        const text = await res.text();
+        const codeBox = document.getElementById("code-box");
+        const viewer = document.getElementById("viewer-container");
+        const fileName = document.getElementById("file-name");
 
-      const codeBox = document.getElementById("code-box");
-      const viewer = document.getElementById("viewer-container");
-      const fileName = document.getElementById("file-name");
+        codeBox.className = `language-${lang}`;
+        codeBox.textContent = text;
+        fileName.textContent = path;
 
-      codeBox.className = "language-" + lang;
-      codeBox.textContent = text;
-      fileName.textContent = path;
-
-      viewer.style.display = "block";
-
-      Prism.highlightAll();
-      viewer.scrollIntoView({ behavior: "smooth" });
+        viewer.style.display = "block";
+        Prism.highlightAll();
+        viewer.scrollIntoView({ behavior: "smooth" });
+      } catch (error) {
+        console.error("Failed to load code:", error);
+        alert("Error loading code. Please check the file path.");
+      }
     }
 
     function copyCode() {
       const codeText = document.getElementById("code-box").textContent;
-      navigator.clipboard.writeText(codeText);
-      alert("Code copied to clipboard!");
+      navigator.clipboard.writeText(codeText).then(() => {
+        alert("Code copied to clipboard!");
+      }).catch(err => {
+        console.error('Failed to copy text:', err);
+        alert("Failed to copy code.");
+      });
     }
   </script>
 </body>
