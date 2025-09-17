@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odd or Even</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        h1 {
+            color: #0072ff;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #0072ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #005fcc;
+        }
+
+        #answer {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Odd or Even Checker</h1>
+        <form action="" onsubmit="return calc()"> 
+            <input type="text" id="num1" placeholder="Enter a number">
+            <input type="submit" value="Check">
+        </form>
+        <div id="answer"></div>
+    </div>
+
+    <script>
+        function calc() {
+            let num1 = document.getElementById("num1").value;
+            num1 = parseInt(num1); 
+
+            const answerDiv = document.getElementById("answer");
+
+            if (isNaN(num1)) {
+                answerDiv.innerHTML = "❌ Please enter a valid number.";
+                answerDiv.style.color = "red";
+            } else if (num1 % 2 === 0) {
+                answerDiv.innerHTML = `✅ ${num1} is an Even number`;
+                answerDiv.style.color = "green";
+            } else {
+                answerDiv.innerHTML = `✅ ${num1} is an Odd number`;
+                answerDiv.style.color = "blue";
+            }
+
+            return false;
+        }
+    </script>
+</body>
+</html>
