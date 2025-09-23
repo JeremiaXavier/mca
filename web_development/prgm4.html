@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admission Registration Form</title>
+    <script>
+        function validateForm() {
+            // Course Selection
+            let courses = document.getElementsByName("course");
+            let courseSelected = false;
+            for (let c of courses) {
+                if (c.checked) {
+                    courseSelected = true;
+                    break;
+                }
+            }
+            if (!courseSelected) {
+                alert("Please select a course.");
+                return false;
+            }
+
+            // Full Name
+            let name = document.forms["regForm"]["name"].value.trim();
+            if (name === "") {
+                alert("Full Name must be filled out.");
+                return false;
+            }
+
+            // Gender
+            let genders = document.getElementsByName("gender");
+            let genderSelected = false;
+            for (let g of genders) {
+                if (g.checked) {
+                    genderSelected = true;
+                    break;
+                }
+            }
+            if (!genderSelected) {
+                alert("Please select your gender.");
+                return false;
+            }
+
+            // Date of Birth
+            let dob = document.forms["regForm"]["dob"].value;
+            if (dob === "") {
+                alert("Please select your Date of Birth.");
+                return false;
+            }
+
+            // Phone
+            let phone = document.forms["regForm"]["phone"].value.trim();
+            let phonePattern = /^[0-9]{10}$/;
+            if (!phonePattern.test(phone)) {
+                alert("Enter a valid 10-digit phone number.");
+                return false;
+            }
+
+            // Guardian
+            let guardian = document.forms["regForm"]["guardian"].value.trim();
+            if (guardian === "") {
+                alert("Guardian's Name must be filled out.");
+                return false;
+            }
+
+            // If all validations pass
+            alert("Form submitted successfully!");
+            return true;
+        }
+    </script>
+</head>
+
+<body style="padding:1.5rem;">
+    <h2 align="center">Admission Registration Form</h2>
+
+    <form name="regForm" onsubmit="return validateForm()">
+        <!-- Course Selection -->
+        <h3>Course Selection</h3>
+        <table border="0" width="100%">
+            <tr>
+                <td>Choose Course:</td>
+                <td>
+                    <input type="radio" name="course" value="BA"> BA
+                    <input type="radio" name="course" value="B.Sc"> B.Sc
+                    <input type="radio" name="course" value="BCA"> BCA
+                </td>
+            </tr>
+        </table>
+
+        <!-- Personal Information -->
+        <h3>Personal Information</h3>
+        <table border="0" width="100%" cellspacing="5">
+            <tr>
+                <td>Full Name:</td>
+                <td><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td>
+                    <input type="radio" name="gender" value="Male"> Male
+                    <input type="radio" name="gender" value="Female"> Female
+                    <input type="radio" name="gender" value="Other"> Other
+                </td>
+            </tr>
+            <tr>
+                <td>Date of Birth:</td>
+                <td><input type="date" name="dob"></td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td><textarea name="address" rows="3" cols="40"></textarea></td>
+            </tr>
+            <tr>
+                <td>Phone Number:</td>
+                <td><input type="tel" name="phone"></td>
+            </tr>
+            <tr>
+                <td>Guardian's Name:</td>
+                <td><input type="text" name="guardian"></td>
+            </tr>
+            <tr>
+                <td>Hobbies:</td>
+                <td>
+                    <input type="checkbox" name="hobby" value="Sports"> Sports
+                    <input type="checkbox" name="hobby" value="Music"> Music
+                    <input type="checkbox" name="hobby" value="Reading"> Reading
+                    <input type="checkbox" name="hobby" value="Dance"> Dance
+                    <input type="checkbox" name="hobby" value="Other"> Other
+                </td>
+            </tr>
+            <tr>
+                <td>Extra-Curricular Activities:</td>
+                <td><textarea name="extra" rows="3" cols="40"></textarea></td>
+            </tr>
+        </table>
+
+        <!-- Office Use -->
+        <h3>For Office Use Only</h3>
+        <table border="1" width="100%" cellspacing="0" cellpadding="5">
+            <tr>
+                <td>Admission No.</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Course Code</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Verified By</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Remarks</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <br>
+        <center>
+            <input type="submit" value="Submit Application">
+        </center>
+    </form>
+</body>
+
+</html>
