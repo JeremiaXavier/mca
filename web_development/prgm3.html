@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Odd or Even</title>
+<style>
+  body {
+    font-family: sans-serif;
+    padding: 20px;
+  }
+  input, button {
+    font-size: 16px;
+    padding: 5px;
+  }
+  #answer {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+  <form onsubmit="return calc()">
+    Enter a number:
+    <input type="text" id="num1" />
+    <button type="submit">Check</button>
+  </form>
+  <div id="answer"></div>
+
+  <script>
+    function calc() {
+      const val = parseInt(document.getElementById('num1').value);
+      const answer = document.getElementById('answer');
+      if (isNaN(val)) {
+        answer.textContent = 'Please enter a valid number.';
+        answer.style.color = 'red';
+      } else if (val % 2 === 0) {
+        answer.textContent = val + ' is an Even number.';
+        answer.style.color = 'green';
+      } else {
+        answer.textContent = val + ' is an Odd number.';
+        answer.style.color = 'blue';
+      }
+      return false;
+    }
+  </script>
+</body>
+</html>

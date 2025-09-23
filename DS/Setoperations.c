@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define SIZE 8   // You can change this to any universal set size
+#define SIZE 10   // You can change this to any universal set size
 
 // Function to display a set from bit string
 void displaySet(int set[]) {
@@ -14,7 +14,7 @@ void displaySet(int set[]) {
 
 // Function for Union
 void setUnion(int A[], int B[], int result[]) {
-    for (int i = 0; i < SIZE; i++)
+    for (int i = 0; i < SIZE; i++) 
         result[i] = A[i] | B[i];
 }
 
