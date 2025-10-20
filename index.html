@@ -3,409 +3,571 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>MACE MCA Lab Programs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab Programs - IREP</title>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-atom-dark.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
-  <style>
-    :root {
-      --bg-color: #1a1a2e;
-      --card-bg: #2d2d44;
-      --text-color: #e0e0e0;
-      --highlight-color: #ff6a6a;
-      --primary-color: #4CAF50;
-      --secondary-color: #7289da;
-      --border-radius: 12px;
-      --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.2);
-      --shadow-dark: 0 8px 25px rgba(0, 0, 0, 0.4);
-    }
 
+  <style>
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      background-color: #f9fafb;
+      color: #1f2937;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .header-gradient {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    }
+
+    .mobile-menu {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #3b82f6;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
     }
 
     .container {
-      max-width: 1000px;
-      margin: 30px auto;
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 0 20px;
-      flex-grow: 1;
     }
 
-    h1, h2, p {
-      text-align: center;
+    .program-card {
+      background: white;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
       margin-bottom: 20px;
+      overflow: hidden;
+      transition: all 0.3s ease;
     }
 
-    h1 {
-      font-weight: 600;
-      font-size: 2.5em;
-      color: var(--highlight-color);
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    .program-card:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
     }
 
-    h2 {
-      font-size: 1.8em;
-      color: var(--secondary-color);
-      margin-top: 40px;
-    }
-
-    .program-section {
-      background-color: var(--card-bg);
-      padding: 25px;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-light);
-      margin-bottom: 30px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .program-section:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-dark);
-    }
-
-    .program-section details {
-      border: none;
-      margin: 0;
-    }
-
-    summary {
-      font-weight: 600;
-      font-size: 1.3em;
-      color: var(--primary-color);
+    .program-header {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      padding: 20px 25px;
       cursor: pointer;
-      padding: 10px 0;
-      transition: color 0.3s ease;
-      list-style: none;
-      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease;
     }
 
-    summary::before {
-      content: '+';
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1.5em;
+    .program-header:hover {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    }
+
+    .program-header h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      color: #1e3a8a;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .program-header i {
+      font-size: 1.5rem;
+      color: #3b82f6;
+    }
+
+    .toggle-icon {
+      font-size: 1.2rem;
+      color: #3b82f6;
       transition: transform 0.3s ease;
     }
 
-    details[open] summary::before {
-      content: '-';
-      transform: translateY(-50%) rotate(45deg);
+    .program-header.active .toggle-icon {
+      transform: rotate(180deg);
     }
 
-    summary:hover {
-      color: var(--highlight-color);
+    .program-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .program-content.active {
+      max-height: 2000px;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 15px;
-      font-size: 0.95em;
-    }
-
-    th, td {
-      padding: 12px;
-      text-align: left;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     th {
-      background-color: #3f3f5a;
-      font-weight: 500;
-      color: #b0b0d0;
+      background: #f9fafb;
+      padding: 14px 20px;
+      text-align: left;
+      font-weight: 600;
+      color: #374151;
+      border-bottom: 2px solid #e5e7eb;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      padding: 16px 20px;
+      border-bottom: 1px solid #f3f4f6;
+      color: #4b5563;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover {
+      background: #f9fafb;
     }
 
     td a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      color: white;
       text-decoration: none;
-      color: var(--secondary-color);
+      border-radius: 6px;
       font-weight: 600;
-      transition: color 0.3s ease;
+      font-size: 0.875rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
     }
 
     td a:hover {
-      color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
     }
 
     #viewer-container {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 40px auto;
-      border-radius: var(--border-radius);
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: var(--shadow-dark);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
       display: none;
-      animation: fadeInScale 0.5s ease-out;
+      animation: fadeInScale 0.4s ease-out;
     }
 
     @keyframes fadeInScale {
-      from { opacity: 0; transform: scale(0.95); }
+      from { opacity: 0; transform: scale(0.98); }
       to { opacity: 1; transform: scale(1); }
     }
 
     #viewer-header {
-      background: #1e1e1e;
-      color: #eee;
-      padding: 12px 20px;
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 16px 24px;
       font-family: 'Roboto Mono', monospace;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #333;
+      border-bottom: 1px solid #334155;
     }
 
     #viewer-header span {
       font-weight: 500;
-      color: var(--primary-color);
+      color: #60a5fa;
+      font-size: 0.9rem;
     }
 
     #viewer-header button {
-      background: var(--secondary-color);
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
       border: none;
       color: white;
-      padding: 8px 16px;
+      padding: 10px 20px;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 0.9em;
-      font-weight: 500;
-      transition: background-color 0.3s ease;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     #viewer-header button:hover {
-      background: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
     }
 
     pre {
       margin: 0;
       font-family: 'Roboto Mono', monospace;
       font-size: 0.9em;
-      line-height: 1.5;
+      line-height: 1.6;
       overflow-x: auto;
-      background-color: #1e1e1e !important;
-      padding: 20px;
+      background-color: #1e293b !important;
+      padding: 24px;
+      max-height: 600px;
+      overflow-y: auto;
     }
 
     footer {
+      background: #111827;
+      color: #9ca3af;
       text-align: center;
-      margin-top: 40px;
-      padding: 20px;
-      border-top: 1px solid #333;
-      color: #888;
-      font-size: 0.85em;
+      padding: 24px;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 0.875rem;
     }
 
     .footer-logo {
-      height: 25px;
-      vertical-align: middle;
-      margin-right: 10px;
+      height: 24px;
     }
 
     @media (max-width: 768px) {
-      .container {
-        margin: 20px auto;
+      th, td {
+        padding: 12px 16px;
+        font-size: 0.875rem;
       }
 
-      h1 {
-        font-size: 2em;
+      .program-header h3 {
+        font-size: 1.1rem;
       }
 
-      .program-section {
-        padding: 20px;
+      #viewer-header {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      #viewer-header button {
+        width: 100%;
+        justify-content: center;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>MACE MCA Lab Programs</h1>
-    <p>Explore and view code for various lab exercises.</p>
 
-    <div class="program-section">
-      <details>
-        <summary>C Programming Lab</summary>
-        <table>
-          <tr>
-            <th>Sl.No</th>
-            <th>Question</th>
-            <th>Code</th>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Write a program to find fibonacci series.</td>
-            <td><a onclick="loadCode('c/fibonacci.c','c')">View</a></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Write a program to find largest element in matrix.</td>
-            <td><a onclick="loadCode('c/large2D.c','c')">View</a></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Write a program to find row and column sum in matrix.</td>
-            <td><a onclick="loadCode('c/rowcolsum.c','c')">View</a></td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Write a program to search an element from a matrix.</td>
-            <td><a onclick="loadCode('c/search.c','c')">View</a></td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Write a program to implement spiral traversal in a matrix.</td>
-            <td><a onclick="loadCode('c/spiraltraversal.c','c')">View</a></td>
-          </tr>
-        </table>
-      </details>
-    </div>
-
-    <div class="program-section">
-      <details>
-        <summary>Data Structures Lab</summary>
-        <table>
-          <tr>
-            <th>Sl.No</th>
-            <th>Question</th>
-            <th>Code</th>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Implement a singly linked list with insertion and deletion.</td>
-            <td><a onclick="loadCode('DS/linkedlist.c','c')">View</a></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Implement stack using linkedlist.</td>
-            <td><a onclick="loadCode('DS/linkedstack.c','c')">View</a></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Implement doubly linkedlist and its operations.</td>
-            <td><a onclick="loadCode('DS/doubly_linkedlist.c','c')">View</a></td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Implement circular queue and its operations.</td>
-            <td><a onclick="loadCode('DS/circularqueue.c','c')">View</a></td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Implement Binary tree and its operations.</td>
-            <td><a onclick="loadCode('DS/Binarytree.c','c')">View</a></td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>Set operations (Union,Intersection etc).</td>
-            <td><a onclick="loadCode('DS/Setoperations.c','c')">View</a></td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>Disjoint Set operations (Union,Find).</td>
-            <td><a onclick="loadCode('DS/disjoint.c','c')">View</a></td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td>Binary Search Tree and its operations.</td>
-            <td><a onclick="loadCode('DS/SearchTree.c','c')">View</a></td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td>Prim’s Algorithm for finding the minimum cost spanning tree</td>
-            <td><a onclick="loadCode('DS/prims.c','c')">View</a></td>
-          </tr>
-        </table>
-      </details>
-    </div>
-
-    <div class="program-section">
-      <details>
-        <summary>Web Development Lab</summary>
-        <table>
-          <tr>
-            <th>Sl.No</th>
-            <th>Question</th>
-            <th>Code</th>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Prepare a Registration form for admission.</td>
-            <td><a onclick="loadCode('web_development/prgm1.html','markup')">View</a></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Create an HTML page to demonstrate the use of inline, internal, and external CSS.</td>
-            <td><a onclick="loadCode('web_development/prgm2.html','markup')">View</a></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Create an HTML page to demonstrate the use of javascript (odd or even).</td>
-            <td><a onclick="loadCode('web_development/prgm3.html','markup')">View</a></td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Javascript validation for  Registration form.</td>
-            <td><a onclick="loadCode('web_development/prgm4.html','markup')">View</a></td>
-          </tr>
-        </table>
-      </details>
-    </div>
-    <div class="program-section">
-      <details>
-        <summary>Python Programming Lab</summary>
-        <table>
-          <tr>
-            <th>Sl.No</th>
-            <th>Question</th>
-            <th>Code</th>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Program to set a string from user.....</td>
-            <td><a onclick="loadCode('python/pgm1.py','markup')">View</a></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Create an HTML page to demonstrate the use of inline, internal, and external CSS.</td>
-            <td><a onclick="loadCode('web_development/prgm2.html','markup')">View</a></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Create an HTML page to demonstrate the use of javascript (odd or even).</td>
-            <td><a onclick="loadCode('web_development/prgm3.html','markup')">View</a></td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Javascript validation for  Registration form.</td>
-            <td><a onclick="loadCode('web_development/prgm4.html','markup')">View</a></td>
-          </tr>
-        </table>
-      </details>
-    </div>
-
-    <div id="viewer-container">
-      <div id="viewer-header">
-        <span id="file-name">File Viewer</span>
-        <button onclick="copyCode()">Copy Code</button>
+  <!-- Top Bar -->
+  <div style="background: #111827; color: #9ca3af; padding: 8px 0; font-size: 0.875rem;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <span><i class="fas fa-building" style="margin-right: 4px;"></i> Client: MACE MCA</span>
+        <span class="hidden-mobile"><i class="far fa-clock" style="margin-right: 4px;"></i> Last Updated: Oct 2025</span>
       </div>
-      <pre class="line-numbers"><code id="code-box"></code></pre>
+      <div style="display: flex; gap: 12px;">
+        <a href="https://github.com/JeremiaXavier" target="_blank" style="color: #9ca3af; transition: color 0.3s;">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="mailto:mail.jeremia+requests@gmail.com" style="color: #9ca3af; transition: color 0.3s;">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
     </div>
   </div>
 
+  <!-- Header -->
+  <header style="background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100;">
+    <div class="container" style="padding: 16px 20px; display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <img src="https://jeremiaxavier.github.io/jstatic/jeremia-xavier-high-resolution-logo-transparent.png"
+          alt="JeremiaXavier" style="height: 24px;">
+        <div style="border-left: 2px solid #e5e7eb; padding-left: 16px;">
+          <p style="margin: 0; font-size: 1.125rem; font-weight: 700;" class="gradient-text">IREP</p>
+          <p style="margin: 0; font-size: 0.75rem; color: #6b7280;">Lab Programs Repository</p>
+        </div>
+      </div>
+      <button id="mobile-menu-btn" style="display: none; background: none; border: none; color: #374151; font-size: 1.25rem; cursor: pointer;">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav style="background: white; border-bottom: 1px solid #e5e7eb; position: sticky; top: 64px; z-index: 99;">
+    <div class="container">
+      <ul style="display: flex; justify-content: center; gap: 8px; list-style: none; margin: 0; padding: 0;">
+        <li><a href="/irep/mca/" class="nav-link" style="display: block; padding: 16px 20px; color: #374151; font-weight: 600; text-decoration: none;">
+          <i class="fas fa-home" style="margin-right: 4px;"></i> Home</a></li>
+        <li><a href="#" class="nav-link" style="display: block; padding: 16px 20px; color: #3b82f6; font-weight: 600; text-decoration: none;">
+          <i class="fas fa-code" style="margin-right: 4px;"></i> Lab Programs</a></li>
+        <li><a href="/irep/mca/notes/" class="nav-link" style="display: block; padding: 16px 20px; color: #374151; font-weight: 600; text-decoration: none;">
+          <i class="fas fa-file-alt" style="margin-right: 4px;"></i> Notes</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="header-gradient" style="color: white; padding: 60px 0;">
+    <div class="container" style="text-align: center;">
+      <div style="margin-bottom: 16px;">
+        <span class="badge" style="background: rgba(255,255,255,0.2); color: white;">
+          <i class="fas fa-laptop-code" style="margin-right: 4px;"></i> Programming Lab
+        </span>
+      </div>
+      <h1 style="font-size: 2.5rem; font-weight: 700; margin: 0 0 16px 0;">Lab Programs</h1>
+      <p style="font-size: 1.25rem; color: #bfdbfe; margin: 0;">Explore and view code for various lab exercises</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section style="padding: 60px 0;">
+    <div class="container">
+
+      <!-- C Programming Lab -->
+      <div class="program-card">
+        <div class="program-header" onclick="toggleSection(this)">
+          <h3><i class="fas fa-file-code"></i> C Programming Lab</h3>
+          <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="program-content">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 80px;">Sl.No</th>
+                <th>Question</th>
+                <th style="width: 120px;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Write a program to find fibonacci series.</td>
+                <td><a onclick="loadCode('c/fibonacci.c','c')"><i class="fas fa-eye"></i> View</a></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Write a program to find largest element in matrix.</td>
+                <td><a onclick="loadCode('c/large2D.c','c')"><i class="fas fa-eye"></i> View</a></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Write a program to find row and column sum in matrix.</td>
+                <td><a onclick="loadCode('c/rowcolsum.c','c')"><i class="fas fa-eye"></i> View</a></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Write a program to search an element from a matrix.</td>
+                <td><a onclick="loadCode('c/search.c','c')"><i class="fas fa-eye"></i> View</a></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Write a program to implement spiral traversal in a matrix.</td>
+                <td><a onclick="loadCode('c/spiraltraversal.c','c')"><i class="fas fa-eye"></i> View</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Data Structures Lab -->
+      <div class="program-card">
+        <div class="program-header" onclick="toggleSection(this)">
+          <h3><i class="fas fa-project-diagram"></i> Data Structures Lab</h3>
+          <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="program-content">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 80px;">Sl.No</th>
+                <th>Question</th>
+                <th style="width: 120px;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Implement a singly linked list with insertion and deletion.</td>
+                <td><a onclick="loadCode('DS/linkedlist.c','c')"><i class="fas fa-eye"></i> View</a></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Implement stack using linkedlist.</td>
+                <td><a onclick="loadCode('DS/linkedstack.c','c')"><i class="fas fa-eye"></i> View</a></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Implement doubly linkedlist and its operations.</td>
+                <td><a onclick="loadCode('DS/doubly_linkedlist.c','c')"><i class="fas fa-eye"></i> View</a></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Implement circular queue and its operations.</td>
+                <td><a onclick="loadCode('DS/circularqueue.c','c')"><i class="fas fa-eye"></i> View</a></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Implement Binary tree and its operations.</td>
+                <td><a onclick="loadCode('DS/Binarytree.c','c')"><i class="fas fa-eye"></i> View</a></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Set operations (Union, Intersection etc).</td>
+                <td><a onclick="loadCode('DS/Setoperations.c','c')"><i class="fas fa-eye"></i> View</a></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Disjoint Set operations (Union, Find).</td>
+                <td><a onclick="loadCode('DS/disjoint.c','c')"><i class="fas fa-eye"></i> View</a></td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>Binary Search Tree and its operations.</td>
+                <td><a onclick="loadCode('DS/SearchTree.c','c')"><i class="fas fa-eye"></i> View</a></td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>Prim's Algorithm for finding the minimum cost spanning tree.</td>
+                <td><a onclick="loadCode('DS/prims.c','c')"><i class="fas fa-eye"></i> View</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Web Development Lab -->
+      <div class="program-card">
+        <div class="program-header" onclick="toggleSection(this)">
+          <h3><i class="fas fa-globe"></i> Web Development Lab</h3>
+          <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="program-content">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 80px;">Sl.No</th>
+                <th>Question</th>
+                <th style="width: 120px;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Prepare a Registration form for admission.</td>
+                <td><a onclick="loadCode('web_development/prgm1.html','markup')"><i class="fas fa-eye"></i> View</a></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Create an HTML page to demonstrate the use of inline, internal, and external CSS.</td>
+                <td><a onclick="loadCode('web_development/prgm2.html','markup')"><i class="fas fa-eye"></i> View</a></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Create an HTML page to demonstrate the use of javascript (odd or even).</td>
+                <td><a onclick="loadCode('web_development/prgm3.html','markup')"><i class="fas fa-eye"></i> View</a></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Javascript validation for Registration form.</td>
+                <td><a onclick="loadCode('web_development/prgm4.html','markup')"><i class="fas fa-eye"></i> View</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Python Programming Lab -->
+      <div class="program-card">
+        <div class="program-header" onclick="toggleSection(this)">
+          <h3><i class="fab fa-python"></i> Python Programming Lab</h3>
+          <i class="fas fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="program-content">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 80px;">Sl.No</th>
+                <th>Question</th>
+                <th style="width: 120px;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Program to set a string from user.</td>
+                <td><a onclick="loadCode('python/pgm1.py','python')"><i class="fas fa-eye"></i> View</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Code Viewer -->
+      <div id="viewer-container">
+        <div id="viewer-header">
+          <span id="file-name">File Viewer</span>
+          <button onclick="copyCode()">
+            <i class="fas fa-copy"></i> Copy Code
+          </button>
+        </div>
+        <pre class="line-numbers"><code id="code-box"></code></pre>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <img src="https://jeremiaxavier.github.io/jstatic/logowhite.png" alt="Logo" class="footer-logo">
-    © 2025 Jeremia Xavier Projects
+    <div class="footer-content">
+      <img src="https://jeremiaxavier.github.io/jstatic/logowhite.png" alt="Logo" class="footer-logo">
+      <span>© 2025 Jeremia Xavier Corporation | IREP - Lab Programs Repository</span>
+    </div>
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
@@ -413,7 +575,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
   <script>
+    function toggleSection(header) {
+      const content = header.nextElementSibling;
+      header.classList.toggle('active');
+      content.classList.toggle('active');
+    }
+
     async function loadCode(path, lang) {
       const url = `https://raw.githubusercontent.com/JeremiaXavier/mca/main/${path}`;
       try {
@@ -432,7 +601,7 @@
 
         viewer.style.display = "block";
         Prism.highlightAll();
-        viewer.scrollIntoView({ behavior: "smooth" });
+        viewer.scrollIntoView({ behavior: "smooth", block: "nearest" });
       } catch (error) {
         console.error("Failed to load code:", error);
         alert("Error loading code. Please check the file path.");
@@ -442,13 +611,21 @@
     function copyCode() {
       const codeText = document.getElementById("code-box").textContent;
       navigator.clipboard.writeText(codeText).then(() => {
-        alert("Code copied to clipboard!");
+        const btn = event.target.closest('button');
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        btn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.style.background = 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)';
+        }, 2000);
       }).catch(err => {
         console.error('Failed to copy text:', err);
         alert("Failed to copy code.");
       });
     }
   </script>
+
 </body>
 
 </html>
